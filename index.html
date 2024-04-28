@@ -138,25 +138,19 @@
 
 	<!-- Javascript Assets -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://d1qmdf3vop2l07.cloudfront.net/potent-bike.cloudvent.net/hash-store/273516dba20430694793ce56ce1c6eee.js" data-cms-original-src="/js/plugins-min.js"></script>
-	<script src="https://d1qmdf3vop2l07.cloudfront.net/potent-bike.cloudvent.net/hash-store/7b3e49af477a328b7ef808e6c5e90586.js" data-cms-original-src="/js/simples-min.js"></script>
 	<script>
 	$(document).ready(function(){
-		$(document).ready(function() {
-			$('.tab-link').click(function(e) {
-				e.preventDefault();
-				var tab_id = $(this).data('tab');
-				
-				$('.tab-link').removeClass('active');
-				$('.content').removeClass('active');
-				
-				$(this).addClass('active');
-				$("#" + tab_id).addClass('active');
+		$('.menu__list__item__link').click(function(e) {
+			e.preventDefault();
+			var tab_id = $(this).attr('href');
+			
+			$('.menu__list__item__link').removeClass('active-link');
+			$('.content').removeClass('active');
+			
+			$(this).addClass('active-link');
+			$(tab_id).addClass('active');
+		});
 	});
-	// function to dynamically add content to a tab
-	function addContentToTab(tabId, content) {
-		$('#' + tabId).append('<p>' + content + '</p>');
-	}
 	</script>
 </body>
 
