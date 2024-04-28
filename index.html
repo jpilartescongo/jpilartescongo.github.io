@@ -49,10 +49,10 @@
 			<!-- Menu content -->
 			<div class="menu">
 				<ul class="menu__list">
-					<li class="menu__list__item"><a href="/" class="menu__list__item__link">Presentations</a></li>
-					<li class="menu__list__item"><a href="/publications/" class="menu__list__item__link active-link">Publications</a></li>
-					<li class="menu__list__item"><a href="/about" class="menu__list__item__link">About</a></li>
-					<li class="menu__list__item"><a href="/contact" class="menu__list__item__link">Contact</a></li>
+					<li class="menu__list__item"><a href="#presentations" class="menu__list__item__link">Presentations</a></li>
+					<li class="menu__list__item"><a href="#publications" class="menu__list__item__link">Publications</a></li>
+					<li class="menu__list__item"><a href="#about" class="menu__list__item__link">About</a></li>
+					<li class="menu__list__item"><a href="#contact" class="menu__list__item__link">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -141,17 +141,45 @@
 	<script>
 	$(document).ready(function(){
 		$('.menu__list__item__link').click(function(e) {
-			e.preventDefault();
-			var tab_id = $(this).attr('href');
-			
-			$('.menu__list__item__link').removeClass('active-link');
-			$('.content').removeClass('active');
-			
-			$(this).addClass('active-link');
-			$(tab_id).addClass('active');
-		});
+
+It looks like the tabs are empty because both the "Presentations" and "Publications" sections are using the same class .content, but only the "Publications" section has the appropriate ID (id="publications"). You'll want to ensure each tab content has a unique ID that matches the href attribute in the navigation links.
+
+Here’s how you should adjust the structure and script:
+
+Adjust the Href Attributes: Change the href attributes of the <a> tags in the menu to point to IDs instead of paths. For example, change href="/publications/" to href="#publications".
+Ensure Unique IDs: Make sure each tab content has a unique ID. For example, add id="presentations" to the div containing the presentations content.
+Update the JavaScript: The JavaScript function should reference these IDs to show and hide content correctly.
+Here's the corrected portion of your HTML and JavaScript:
+
+html
+Copy code
+<!-- Menu content -->
+<div class="menu">
+    <ul class="menu__list">
+        <li class="menu__list__item"><a href="#presentations" class="menu__list__item__link">Presentations</a></li>
+        <li class="menu__list__item"><a href="#publications" class="menu__list__item__link">Publications</a></li>
+        <li class="menu__list__item"><a href="#about" class="menu__list__item__link">About</a></li>
+        <li class="menu__list__item"><a href="#contact" class="menu__list__item__link">Contact</a></li>
+    </ul>
+</div>
+And the JavaScript:
+
+javascript
+Copy code
+<script>
+$(document).ready(function(){
+	$('.menu__list__item__link').click(function(e) {
+		e.preventDefault();
+		var tab_id = $(this).attr('href');
+		
+		$('.menu__list__item__link').removeClass('active-link');
+		$('.content').removeClass('active');
+		
+		$(this).addClass('active-link');
+		$(tab_id).addClass('active');
 	});
-	</script>
+});
+</script>
 </body>
 
 </html>
