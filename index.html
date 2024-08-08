@@ -30,6 +30,15 @@
 	}
 	.content{display: none;}
 	.active{display: block;}
+	.menu__list__item__link {
+		background: none;
+		border: none;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+		text-decoration: none;
+		padding: 10px;
+	}
 	</style>
 	
 	<!-- Tab Switching Script -->
@@ -72,9 +81,9 @@
 			<!-- Menu content -->
 			<div class="menu">
 				<ul class="menu__list">
-					<li class="menu__list__item"><a href="javascript:void(0)" class="menu__list__item__link active-link" onclick="openTab('Publications')">Publications</a></li>
-					<li class="menu__list__item"><a href="javascript:void(0)" class="menu__list__item__link" onclick="openTab('Presentations')">Presentations</a></li>
-					<li class="menu__list__item"><a href="javascript:void(0)" class="menu__list__item__link" onclick="openTab('About')">About</a></li>
+					<li class="menu__list__item"><button class="menu__list__item__link active-link" onclick="openTab('Publications')">Publications</Publications></li>
+					<li class="menu__list__item"><button class="menu__list__item__link" onclick="openTab('Presentations')">Presentations</button></li>
+					<li class="menu__list__item"><button class="menu__list__item__link" onclick="openTab('About')">About</button></li>
 				</ul>
 			</div>
 		</div>
@@ -173,23 +182,7 @@
 	<script src="https://d1qmdf3vop2l07.cloudfront.net/potent-bike.cloudvent.net/hash-store/273516dba20430694793ce56ce1c6eee.js" data-cms-original-src="/js/plugins-min.js"></script>
 	<script src="https://d1qmdf3vop2l07.cloudfront.net/potent-bike.cloudvent.net/hash-store/7b3e49af477a328b7ef808e6c5e90586.js" data-cms-original-src="/js/simples-min.js"></script>
 	
-<!-- 	<script>
-	$(document).ready(function() {
-		$('.tab-link').click(function(e) {
-			e.preventDefault();
-			var tab_id = $(this).data('tab');
-			
-			$('.tab-link').removeClass('active');
-			$('.content').removeClass('active');
-			
-			$(this).addClass('active');
-			$("#" + tab_id).addClass('active');
-	});
-	// function to dynamically add content to a tab
-	function addContentToTab(tabId, content) {
-		$('#' + tabId).append('<p>' + content + '</p>');
-	}
-	</script> -->
+
 </body>
 
 </html>
