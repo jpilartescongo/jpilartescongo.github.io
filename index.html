@@ -31,6 +31,29 @@
 	.content{display: none;}
 	.active{display: block;}
 	</style>
+	
+	<!-- Tab Switching Script -->
+	<script>
+		function openTab(tabName) {
+			var i, content, tablinks;
+			content = document.getElementsByClassName("content");
+			for (i = 0; i < content.length; i++) {
+				content[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("menu__list__item__link");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active-link", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			event.currentTarget.className += " active-link";
+		}
+		
+		// Default to the Publications tab
+		window.onload = function() {
+			openTab('Publications');
+		};
+	</script>
+	
 </head>
 
 
@@ -49,19 +72,16 @@
 			<!-- Menu content -->
 			<div class="menu">
 				<ul class="menu__list">
-					<li class="menu__list__item"><a href="/publications/" class="menu__list__item__link active-link">Publications</a></li>
-					<li class="menu__list__item"><a href="/" class="menu__list__item__link">Presentations</a></li>
-					<li class="menu__list__item"><a href="/about" class="menu__list__item__link">About</a></li
+					<li class="menu__list__item"><a href="javascript:void(0)" class="menu__list__item__link active-link" onclick="openTab('Publications')">Publications</a></li>
+					<li class="menu__list__item"><a href="javascript:void(0)" class="menu__list__item__link" onclick="openTab('Presentations')">Presentations</a></li>
+					<li class="menu__list__item"><a href="javascript:void(0)" class="menu__list__item__link" onclick="openTab('About')">About</a></li>
 				</ul>
 			</div>
 		</div>
 	</header>
-
-	<div class="loader"><svg width="120" height="30" viewbox="0 0 120 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="15" /><animate attributename="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcmode="linear" repeatcount="indefinite"><animate attributename="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcmode="linear" repeatcount="indefinite"><circle cx="60" cy="15" r="9" fill-opacity="0.3" /><animate attributename="r" from="9" to="9" begin="0s" dur="0.8s" values="9;15;9" calcmode="linear" repeatcount="indefinite"><animate attributename="fill-opacity" from="0.5" to="0.5" begin="0s" dur="0.8s" values=".5;1;.5" calcmode="linear" repeatcount="indefinite"><circle cx="105" cy="15" r="15" /><animate attributename="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcmode="linear" repeatcount="indefinite"><animate attributename="fill-opacity" from="1" to="1" begin="0s" dur="0.8s" values="1;.5;1" calcmode="linear" repeatcount="indefinite"></animate></animate></animate></animate></animate></animate></svg></div>
-	<div class="page-loader"></div>
 	
 	<div class="page">
-		<div class="page__content" data-page-title="Publications" data-cms-content-wrapper="/_layouts/default.html">
+		<div id="Publications" class="page__content content">
 			<section class="listing single">
 				<div class="wrap">
 					<article class="listing-post">
@@ -82,13 +102,12 @@
 	</div>
 	
 	<div class="page">
-		<div class="page__content" data-page-title="Presentations" data-cms-content-wrapper="/_layouts/default.html">
+		<div id="Presentations" class="page__content content">
 			<section class="listing single">
 				<div class="wrap">
 					<article class="listing-post">
 						<div class="listing-post__header">
 							<h2 class="listing-post__title"><a href="/presentations">Presentations</a></h2>
-							<p class="listing-post__subtitle">Complete list of presentations</p>
 							<div class="listing-post__content">
 								<p class="citations">Pilartes-Congo, J., Starek, M. J., Pashaei, M. & Berryhill, J. “Examination of UAS-SfM and UAS-Lidar for Survey Repeatability of Roadway Corridors.” Presented at the IEEE International Geoscience and Remote Sensing Symposium (IGARSS), July 7-12 2024, Athens: Greece.</p>
 								<p class="citations">Pashaei, M., Starek, M. J., Berryhill, J. & Pilartes-Congo, J. “SfM-MVS Photogrammetry with UAS: Leveraging Image Segmentation for Efficient Mapping in Dynamic Coastal Zones.” Presented at the IEEE International Geoscience and Remote Sensing Symposium (IGARSS), July 7-12 2024, Athens: Greece.</p>								
@@ -119,13 +138,12 @@
 	</div>
 	
 	<div class="page">
-		<div class="page__content" data-page-title="About" data-cms-content-wrapper="/_layouts/default.html">
+		<div id="About" class="page__content content">
 			<section class="listing single">
 				<div class="wrap">
 					<article class="listing-post">
 						<div class="listing-post__header">
-							<h2 class="listing-post__title"><a href="/about">About</a></h2>
-							<p class="listing-post__subtitle">About</p>
+							<h2 class="listing-post__title"><a href="/about">About</a></h2>							
 						</div>							
 						<div class="listing-post__content">							
 							<p class="citations">Pilartes-Congo, J. is a Ph.D. student in the Geospatial Computer Science program at Texas A&M University-Corpus Christi.</p>							
